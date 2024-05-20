@@ -38,7 +38,7 @@ public class EndToEndSecurityDemo {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers("/", "/registration/**").permitAll()
+                        .requestMatchers("/", "/login", "/error","/registration/**").permitAll()
                         .anyRequest().authenticated())
 //                        .requestMatchers("/users/**").hasAnyAuthority("USER", "ADMIN"))
                 .formLogin(form -> form.loginPage("/login")
