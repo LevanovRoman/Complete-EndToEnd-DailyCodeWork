@@ -104,7 +104,7 @@ public class RegistrationController {
         }
         Optional<User> theUser = passwordResetTokenService.findUserByPasswordResetToken(theToken);
         if (theUser.isPresent()){
-            passwordResetTokenService.resetPassword(theUser, password);
+            passwordResetTokenService.resetPassword(theUser.get(), password);
             return "redirect:/login?reset_success";
         }
         return "redirect:/error?not_found";
